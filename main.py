@@ -1,4 +1,5 @@
 import requests
+from send_email import send_email
 
 url='https://newsapi.org/v2/everything?q=tesla&from=2022-12-19&sortBy=publishedAt&apiKey=94f415fe5e694f04a9fb7ae9e036810e'
 apiKEY='94f415fe5e694f04a9fb7ae9e036810e'
@@ -18,6 +19,9 @@ def format_article(article):
     '''
     return formatted_article
 
+list=[]
 for article in content:
     art=format_article(article)
-    print(art)
+    list.append(art)
+
+send_email(message=list)
