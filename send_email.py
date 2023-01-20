@@ -9,14 +9,11 @@ def send_email(message):
     password = 'dhenhscrkhymvozk'
     receiver = 'catastudent.32@gmail.com'
 
-    txt=f'''
-    Subject: News form API NEWS!
-    {message}
-    '''
 
-    with smtplib.SMTP("smtp.gmail.com") as server:
+
+    with smtplib.SMTP("smtp.gmail.com",) as server:
         server.starttls() and server.login(user=sender, password=password)
         server.sendmail(from_addr=sender,
                         to_addrs=receiver,
-                        msg=txt)
+                        msg=message)
 
